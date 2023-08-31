@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import InfiniteScroll from "@/components/InfiniteScroll";
 
 interface IPosts {
@@ -12,6 +12,7 @@ export default function App() {
   const [page, setPage] = useState<number>(1);
   const [totalRows, setTotalRows] = useState<number>(0);
   const [posts, setPosts] = useState<IPosts[]>([]);
+  const refs = useRef(null);
 
   useEffect(() => {
     (async () => {
@@ -24,6 +25,17 @@ export default function App() {
       setTotalRows(response.pagination._totalRows);
     })();
   }, [page]);
+
+  const listPost = [
+    { id: 1, name: "Asen" },
+    { id: 1, name: "Asen" },
+    { id: 1, name: "Asen" },
+    { id: 1, name: "Asen" },
+    { id: 1, name: "Asen" },
+    { id: 1, name: "Asen" },
+    { id: 1, name: "Asen" },
+    { id: 1, name: "Asen" },
+  ];
 
   return (
     <div>
